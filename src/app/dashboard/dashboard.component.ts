@@ -16,6 +16,7 @@ import * as XLSX from 'xlsx';
 })
 export class DashboardComponent implements OnInit{
   // data : UserData[];
+  isAuthenticated: boolean;
   displayedColumns: string[] = ['country', 'cases', 'deaths','critical','recovered','active'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;

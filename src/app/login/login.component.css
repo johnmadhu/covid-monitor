@@ -1,6 +1,6 @@
 mat-card {
-      max-width: 400px;
-      width: 400px;
+      max-width: 350px;
+      width: 350px;
       margin: 2em auto;
       text-align: center;
 }
@@ -13,7 +13,7 @@ mat-card {
   background-position: center;
   background-repeat: no-repeat;
   margin: 0;
-   min-height: calc(100vh - 65px);
+   min-height: calc(100vh - 0px);
 }
 body{
   background: url('https://storage.googleapis.com/theme-vessel/checking-sites/logdy-html/assets/img/img-4.jpg');
