@@ -1,0 +1,92 @@
+h1{
+    color: red;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+.my-input{
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.my-text{
+    font-size: 20px;
+}
+
+.box{
+    /* border: 1px solid white; */
+    margin: 0px;
+}
+.c-view{   
+    width: max-content;
+    box-shadow: 7px 6px 7px 0px #adacac;
+    margin:10px;
+    border-radius: 5px;
+    background: #ddd;}
+.c-view, .box-head{
+    border: none;
+    padding: 5px;
+}
+.box-body{
+    /* border: 1px solid white; */
+    padding: 10px;
+}
+.bg-chart{
+    /* background-color: #ccc; */
+    height: 60px;
+}
+
+.all-countries{
+    /* height: 100vh;*/
+    /* overflow: auto;      */
+    width: 100%;
+}
+.main-view{
+    border: none;
+    display: flow-root;
+    width: 100vw;
+}
+/* styles of grid cards */
+
+.counts{
+    width:16%;
+    padding: 10px;
+    height:30vh;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+.card{position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+    background-clip: border-box;
+    /* background-color: #191c24; */
+    /* border: 1px solid rgba(0, 0, 0, 0.125); */
+    border-radius: 0.25rem;}
+    .card .card-body {
+        padding: 1rem;
+    }
+    .top-sec-count .card{
+        background: linear-gradient(
+            39deg
+            , #000a0a, #00000070);
+                color: #fff;
+    }
+    .text-white{color:#fff}
+    .bg-gray-dark{
+        background: #333;
+    }
+    .stretch-card{margin-bottom:5px}
+    /* .embed-responsive iframe{height: 30%;} */
+    /* .slide-card{height:94vh} */
+    .bg-white{background: #fff;}

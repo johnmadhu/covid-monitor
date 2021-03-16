@@ -1,0 +1,330 @@
+<div class="container main-view">
+    <div class="row mt-3 top-sec-count">
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-9">
+                    <h6>Cases</h6>
+                  <div class="d-flex align-items-center align-self-start">
+                    <h4 class="mb-0 text-warning">{{ total[1] | number }}</h4>
+                    <!-- <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> -->
+                  </div>
+                </div>
+                <div class="col-3">
+                  <!-- <div class="icon icon-box-success "> -->
+                    <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
+                  <!-- </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-9">
+                    <h6>Deaths</h6>
+                  <div class="d-flex align-items-center align-self-start">
+                    <h4 class="mb-0 text-danger">{{ total[3] | number}}</h4>
+                    <!-- <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p> -->
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="icon icon-box-success">
+                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-9">
+                    <h6>Recovered</h6>
+                  <div class="d-flex align-items-center align-self-start">
+                    <h4 class="mb-0 text-success">{{ total[5] | number}}</h4>
+                    <!-- <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p> -->
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="icon icon-box-danger">
+                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-9">
+                    <h6>Active</h6>
+                  <div class="d-flex align-items-center align-self-start">
+                    <h4 class="mb-0 text-info">{{ total[6] | number}}</h4>
+                    <!-- <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> -->
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="icon icon-box-success ">
+                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Details -->
+      <div class="quick-view mt-4">
+        <!-- Data Details -->
+        <div *ngIf="cstat" class="row m-0 justify-content-center">
+            <div class="col-12 box-head px-0">
+                    <div class="float-left">
+                            <!-- <mat-form-field appearance="fill">
+                              <mat-label>Select Country</mat-label>
+                              <mat-select [(ngModel)]="country" (selectionChange)="onChange()">
+                                <mat-option *ngFor="let country of counties" [value]="country">
+                                  {{country}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field> -->
+                        <!-- <input class="form-control form-control-lg" [(ngModel)]="country" (change)="onChange()"> -->
+                        <select class="form-control form-control-lg" [(ngModel)]="country" (change)="onChange()">
+                            <option *ngFor="let country of counties">{{country}}</option>
+                        </select>
+                    </div>
+                    <h5 class="col-md text-center">Below showing the details of {{ cstat.country_name }}</h5>
+            </div>
+            <div class="text-left box-body col-12">
+                <div class="row">
+                    <div class="col-md-4 px-3 p-md-2 pt-0 col-sm-12">
+                        <div class="bg-gray-dark d-flex justify-content-between text-white flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-0">
+                            <div class="text-md-center text-xl-left">
+                              <h6 class="mb-1">Total cases</h6>
+                              <!-- <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p> -->
+                            </div>
+                            <div class="align-self-center flex-grow text-right text-xl-right py-md-2 py-xl-0">
+                              <h6 class="font-weight-bold mb-0">{{ cstat.cases }}</h6>
+                            </div>
+                        </div>
+                        <div class="bg-gray-dark d-flex justify-content-between text-white flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                            <div class="text-md-center text-xl-left">
+                              <h6 class="mb-1">Active cases</h6>
+                              <!-- <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p> -->
+                            </div>
+                            <div class="align-self-center flex-grow text-right text-xl-right py-md-2 py-xl-0">
+                              <h6 class="font-weight-bold mb-0">{{ cstat.active_cases }}</h6>
+                            </div>
+                        </div>
+                        <div class="bg-gray-dark d-flex justify-content-between text-white flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                            <div class="text-md-center text-xl-left">
+                              <h6 class="mb-1">Deaths</h6>
+                              <!-- <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p> -->
+                            </div>
+                            <div class="align-self-center flex-grow text-right text-xl-right py-md-2 py-xl-0">
+                              <h6 class="font-weight-bold mb-0">{{ cstat.deaths }}</h6>
+                            </div>
+                        </div>
+                        <div class="bg-gray-dark d-flex justify-content-between text-white flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                            <div class="text-md-center text-xl-left">
+                              <h6 class="mb-1">Deaths per 1m Population</h6>
+                              <!-- <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p> -->
+                            </div>
+                            <div class="align-self-center flex-grow text-right text-xl-right py-md-2 py-xl-0">
+                              <h6 class="font-weight-bold mb-0">{{ cstat.deaths_per_1m_population }}</h6>
+                            </div>
+                        </div>
+                        <div class="bg-gray-dark d-flex justify-content-between text-white flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                            <div class="text-md-center text-xl-left">
+                              <h6 class="mb-1">New Cases</h6>
+                              <!-- <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p> -->
+                            </div>
+                            <div class="align-self-center flex-grow text-right text-xl-right py-md-2 py-xl-0">
+                              <h6 class="font-weight-bold mb-0">{{ cstat.new_cases }}</h6>
+                            </div>
+                        </div>
+                        <div class="bg-gray-dark d-flex justify-content-between text-white flex-row mb-2 py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                            <div class="text-md-center text-xl-left">
+                              <h6 class="mb-1">New Deaths</h6>
+                              <!-- <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p> -->
+                            </div>
+                            <div class="align-self-center flex-grow text-right text-xl-right py-md-2 py-xl-0">
+                              <h6 class="font-weight-bold mb-0">{{ cstat.new_deaths }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start row -->
+                    <div class="col-md-8 col-sm-12 grid-margin stretch-card p-2">
+                        <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-row justify-content-between">
+                            <h5 class="card-title mb-1">{{cstat.country_name}}</h5>
+                            </div>
+                            <div class="row">
+                            <div class="col-12">
+                                <div *ngIf="isChartLoaded" class="col p-3 p-md-2">
+                                    <canvas class="bg-chart"
+                                        baseChart
+                                        [chartType]="'bar'"
+                                        [datasets]="chartData"
+                                        [labels]="chartLabels"
+                                        [options]="chartOptions"
+                                        legend="true"
+                                        (chartClick)="onChartClick($event)">
+                                    </canvas>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+            </div>
+        </div>
+    </div>
+      <!-- secenod section with pie charts -->
+      <div class="row my-4">
+        <div class="col-md-4 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+              <h5 class="card-title mb-0">Covid Monitor </h5>
+              <small class="mb-1">Last update:<span class="text-mute">{{update}}</span></small>
+                <highcharts-chart 
+                [Highcharts]="Highcharts"
+                [options]="chartsOption"
+                style="width: 100%; height: 250px; display: block;"
+                ></highcharts-chart>
+            </div>
+          </div>
+        </div>
+        <!-- start row -->
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card slide-card">
+              <div class="card-body">
+                <div class="d-flex flex-row justify-content-between">
+                  <h5 class="card-title mb-1">All Countries Info</h5>
+                </div>
+                <div class="row">
+                  <div class="col-12 my-4">
+                      <marquee direction="left">
+                      <div class="col-md p-0 all-countries d-flex justify-content-between">
+                        <div *ngFor="let c of allStats; index as i" class="w-100">
+                            <div *ngIf="c.country_name != ''" class="c-view">
+                                <div (click)="onClickCountry(c.country_name)" style="cursor:help">
+                                    <h4 class="text-center m-1">{{ c.country_name }}</h4>
+                                    <div class="p-1">
+                                        <p class="text-center">Casses | Deaths | Recovered</p>
+                                        <p class="text-center">
+                                            <span class="text-info">{{ c.cases }}</span> | 
+                                            <span class="text-danger">{{ c.deaths }}</span> | 
+                                            <span class="text-success">{{ c.total_recovered }}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    </marquee>
+                     <!-- end sec -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end row -->
+        
+      </div>
+      <!-- pie chart end here -->
+      <div class="row">
+        <div class="col-md-12">
+            <div class="mat-elevation-z8 bg-white">
+                <div class="d-flex justify-content-between align-items-center pr-5">
+                    <mat-form-field class="ml-4 mt-3 w-25">
+                        <mat-label>Search here</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Search here" #input>
+                    </mat-form-field>
+                    <div class="example-button-row">
+                        <button mat-raised-button (click)="exportExcel()" color="primary">Export as xlsx <span class="material-icons">
+                            download
+                            </span></button>
+                    </div>
+                </div>
+                <table mat-table [dataSource]="dataSource" class="w-100 responsive-table" id="excel-table" matSort>
+              
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="country">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Country Name </th>
+                    <td mat-cell *matCellDef="let row"> {{row.country_name}} </td>
+                  </ng-container>
+              
+                  <!-- Progress Column -->
+                  <ng-container matColumnDef="cases">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cases </th>
+                    <td mat-cell *matCellDef="let row"> {{row.cases}} </td>
+                  </ng-container>
+              
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="deaths">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Deaths </th>
+                    <td mat-cell *matCellDef="let row"> {{row.deaths}} </td>
+                  </ng-container>
+              
+                  <!-- Color Column -->
+                  <ng-container matColumnDef="critical">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Critical Cases </th>
+                    <td mat-cell *matCellDef="let row"> {{row.serious_critical}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="active">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Active cases </th>
+                    <td mat-cell *matCellDef="let row"> {{row.active_cases}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="recovered">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Recovered </th>
+                    <td mat-cell *matCellDef="let row"> {{row.total_recovered}} </td>
+                  </ng-container>active_cases
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              
+                  <!-- Row shown when there is no matching data. -->
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                  </tr>
+                </table>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Left Details -->
+        <div class="col-md-12 p-0">
+            <div class="quick-view mt-4">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="embed-responsive embed-responsive-16by9 m-md-3">
+                            <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/mlr6GerFI4U?controls=0" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                        </div>
+                        <!-- <img [src]="image" class="img-fluid" alt="WHO Guidelines"> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Top Indexed -->
+            
+        </div>
+        <!-- Left Details -->
+    </div>
+    
+</div>
