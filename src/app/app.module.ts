@@ -13,6 +13,7 @@ import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ChartsModule } from 'ng2-charts';
+import { PhaniComponent } from './phani/phani.component';
 
 
 
@@ -21,7 +22,8 @@ import { ChartsModule } from 'ng2-charts';
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    PhaniComponent
   ],
   imports: [
     BrowserModule,

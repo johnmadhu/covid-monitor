@@ -1,0 +1,56 @@
+
+<mat-toolbar class="d-flex justify-content-between" color="primary">
+<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <img src="https://material.angular.io/assets/img/homepage/angular-white-transparent.svg" alt="logo">
+</button>
+<h4>Angular web pages</h4>
+<button mat-button [mat-menu-trigger-for]="menu" class="white-icon" fxHide="false" fxHide.gt-sm>
+    <span class="material-icons">
+        account_circle
+    </span>
+  </button>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="/">
+      <mat-icon>home</mat-icon>
+      Home
+    </button>
+    <button mat-menu-item routerLink="/game">
+      <mat-icon>gamepad</mat-icon>
+      Play
+    </button>
+    <button mat-menu-item routerLink="/login">
+      <mat-icon>power_settings_new</mat-icon>
+      Login
+    </button>
+    <button mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </mat-menu>
+<!-- end top bar -->
+<div class="container">
+    <!-- <div class="loader1" *ngIf="loading">
+        <span>Loading.....</span>
+    </div> -->
+    <div class="spinner" *ngIf="loading">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+
+    <h4 class="text-center text-danger">{{eData}}</h4>
+    <div class="row" *ngIf="!loading">
+        <div class="col-md-4" *ngFor="let data of arrData; let i=index">
+            <div class="card mt-3 mb-3">
+                <h6 class="text-center card-title">{{data.title}}</h6>
+                <div class="card-body">
+                    <h4 class="score text-success"><span>Score : </span>{{data.score}}</h4>
+                    <p class="card-text">{{data.selftext_html ? data.selftext_html: "----" }}</p>
+                    <p><a href="#">{{data.url}}</a></p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

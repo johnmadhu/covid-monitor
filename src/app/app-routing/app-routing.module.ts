@@ -4,11 +4,13 @@ import { RouterModule,Routes } from '@angular/router';
 import { AuthGaurdService } from '../auth-gaurd.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LoginComponent } from '../login/login.component';
+import { PhaniComponent } from '../phani/phani.component';
 
 const routes:Routes = [
   // {path:'',  redirectTo: 'login', pathMatch: 'full'},
   {path:'login', component:LoginComponent},
   {path : '', component : LoginComponent},
+  {path : 'phani', component : PhaniComponent},
   {path: 'home',component: DashboardComponent, canActivate: [AuthGaurdService]},
   {path:'**', redirectTo: 'login'}
 ]

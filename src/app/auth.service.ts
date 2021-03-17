@@ -2,21 +2,45 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders, HttpHeaderResponse } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders, HttpHeaderResponse,HttpErrorResponse  } from '@angular/common/http';
+// import * as FileSaver from 'file-saver';
+//  import * as XLSX from 'xlsx';\
+import {  throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  // phani data here ================================================================
+  phaniUrl = "https://www.reddit.com/r/Angular2.json";
+  phaniData(){
+    return this.http.get(this.phaniUrl).pipe(catchError(this.errHandler));
+    // return k;
+  }
+
+  errHandler(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
+  }
+
+
+  // phani end here ==================================================================== 
   apiUrl= 'https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php';
   apiHost= "coronavirus-monitor.p.rapidapi.com";
   apiKey="q2EVYJHLCb2KBzOSZm6CZXUFkUOA6NEv";
-  public isAuthenticated = new BehaviorSubject<boolean>(false);
+  // public isAuthenticated = new BehaviorSubject<boolean>(false);
   constructor(private router: Router, private http:HttpClient) { }
-
   userValid(username,password){
-    this.isAuthenticated;
+    // this.isAuthenticated;
     return true
   }
   // dashboard api's from here ----
