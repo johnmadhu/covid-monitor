@@ -9,6 +9,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  apiUrl= 'https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php';
+  apiHost= "coronavirus-monitor.p.rapidapi.com";
+  apiKey="q2EVYJHLCb2KBzOSZm6CZXUFkUOA6NEv";
   public isAuthenticated = new BehaviorSubject<boolean>(false);
   constructor(private router: Router, private http:HttpClient) { }
 
@@ -19,13 +22,13 @@ export class AuthService {
   // dashboard api's from here ----
   options = {
     headers: new HttpHeaders({
-      "x-rapidapi-host": environment.apiHost,
-      "x-rapidapi-key": environment.apiKey
+      "x-rapidapi-host": this.apiHost,
+      "x-rapidapi-key": this.apiKey
     })
   };
   // -------------
   getAllStat(){
-    return this.http.get( environment.apiUrl , this.options);
+    return this.http.get( this.apiUrl , this.options);
   }
 
   getCountries(){
@@ -46,8 +49,8 @@ export class AuthService {
     try {
       const options = {
         headers: new HttpHeaders({
-          "x-rapidapi-host": environment.apiHost,
-          "x-rapidapi-key": environment.apiKey
+          "x-rapidapi-host": this.apiHost,
+          "x-rapidapi-key": this.apiKey
         }),
         // responseType: 'text',
         // observe: 'string'
@@ -114,8 +117,8 @@ export class AuthService {
   getHistoryChart(country){
     const options = {
       headers: new HttpHeaders({
-        "x-rapidapi-host": environment.apiHost,
-        "x-rapidapi-key": environment.apiKey
+        "x-rapidapi-host": this.apiHost,
+        "x-rapidapi-key": this.apiKey
       }),
       params: {
         "country": country

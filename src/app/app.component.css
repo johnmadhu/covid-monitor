@@ -1,9 +1,4 @@
-.expanded-toolbar {
-      justify-content: space-between;
-      align-items: center;
-    }
-.brand-logo img{height: 15px;}
-mat-toolbar{background: #1b1b1b;}
+
 body{
   font-family: 'Kanit', sans-serif !important;
   -webkit-font-smoothing: antialiased;
